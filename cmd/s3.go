@@ -24,7 +24,7 @@ import (
 // s3Cmd represents the s3 command
 var s3Cmd = &cobra.Command{
 	Use:   "s3",
-	Short: "A brief description of your command",
+	Short: "S3 resources decommissioner.",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
@@ -48,4 +48,6 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// s3Cmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	s3Cmd.Flags().BoolP("apply", "A", false, "Flag to apply changes, if this flag is not set, no changes will be made.")
+
 }
