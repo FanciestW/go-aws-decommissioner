@@ -48,6 +48,6 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// s3Cmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	s3Cmd.Flags().BoolP("apply", "A", false, "Flag to apply changes, if this flag is not set, no changes will be made.")
-
+	s3Cmd.Flags().BoolP("apply", "", false, "Flag to apply changes, if this flag is not set, no changes will be made.")
+	s3Cmd.Flags().StringP("bucket", "-b", "", "Specify a bucket to delete or decommission")
 }
