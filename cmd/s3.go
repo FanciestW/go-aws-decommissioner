@@ -21,6 +21,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var apply bool
+var bucket string
+
 // s3Cmd represents the s3 command
 var s3Cmd = &cobra.Command{
 	Use:   "s3",
@@ -33,12 +36,14 @@ This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("s3 called")
+		fmt.Println(apply)
+		fmt.Println(bucket)
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(s3Cmd)
 
+	rootCmd.AddCommand(s3Cmd)
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
@@ -48,6 +53,7 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// s3Cmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	s3Cmd.Flags().BoolP("apply", "", false, "Flag to apply changes, if this flag is not set, no changes will be made.")
-	s3Cmd.Flags().StringP("bucket", "-b", "", "Specify a bucket to delete or decommission")
+	s3Cmd.Flags().BoolVarP(&apply, "apply", "", false, "Flag to apply changes, if this flag is not set, no changes will be made.")
+	s3Cmd.Flags().StringVarP(&bucket, "bucket", "b", "", "Specify a bucket to delete or decommission")
+
 }
